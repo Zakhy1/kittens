@@ -2,7 +2,7 @@ from rest_framework import viewsets
 
 from rest_framework.permissions import IsAuthenticated
 
-from kitten.models import Rating
+from kitten.models.rating import Rating
 from kitten.serializers.rating import RatingSerializer
 
 

@@ -7,10 +7,10 @@ from kitten.views.rating import RatingViewSet
 
 router = DefaultRouter()
 
-router.register(r'breeds', BreedViewSet, basename='breed')
-router.register(r'kittens', KittenViewSet, basename='kitten')
-router.register(r'ratings', RatingViewSet, basename='rating')
+router.register('breeds', BreedViewSet, basename='breed')
+router.register('kittens', KittenViewSet, basename='kitten')
+router.register('ratings', RatingViewSet, basename='rating')
 
 urlpatterns = [
-    path('api/', include(router.urls)),
+    path('', include(router.urls)),
 ]

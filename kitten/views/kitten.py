@@ -2,7 +2,7 @@ from rest_framework import viewsets, permissions
 from rest_framework.exceptions import PermissionDenied
 from rest_framework.permissions import IsAuthenticatedOrReadOnly
 
-from kitten.models import Kitten
+from kitten.models.kitten import Kitten
 from kitten.serializers.kitten import KittenSerializer
 
 

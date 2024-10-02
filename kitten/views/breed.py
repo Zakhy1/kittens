@@ -1,6 +1,6 @@
 from rest_framework import viewsets
 
-from kitten.models import Breed
+from kitten.models.breed import Breed
 from kitten.serializers.breed import BreedSerializer
 
 
