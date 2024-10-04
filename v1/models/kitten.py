@@ -1,4 +1,4 @@
-from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
 from django.db import models
 
 
@@ -7,4 +7,4 @@ class Kitten(models.Model):
     color = models.CharField(max_length=50)
     age = models.PositiveIntegerField()
     description = models.TextField()
-    owner = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
+    owner = models.ForeignKey(User, on_delete=models.CASCADE)

@@ -1,7 +1,7 @@
 from rest_framework import viewsets
 
-from kitten.models.breed import Breed
-from kitten.serializers.breed import BreedSerializer
+from v1.models.breed import Breed
+from v1.serializers.breed import BreedSerializer
 
 
 class BreedViewSet(viewsets.ModelViewSet):

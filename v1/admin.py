@@ -1,8 +1,8 @@
 from django.contrib import admin
 
-from kitten.models.breed import Breed
-from kitten.models.kitten import Kitten
-from kitten.models.rating import Rating
+from v1.models.breed import Breed
+from v1.models.kitten import Kitten
+from v1.models.rating import Rating
 
 
 @admin.register(Breed)

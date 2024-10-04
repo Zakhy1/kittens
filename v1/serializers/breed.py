@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from kitten.models.breed import Breed
+from v1.models.breed import Breed
 
 
 class BreedSerializer(serializers.ModelSerializer):
