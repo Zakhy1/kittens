@@ -17,7 +17,6 @@ class RatingViewSet(viewsets.ModelViewSet):
     def perform_create(self, serializer):
         serializer.save(user=self.request.user)
 
-    # TODO юзера нельзя изменить, только для чтения
     @swagger_auto_schema(manual_parameters=[jwt_auth])
     def create(self, request, *args, **kwargs):
         return super().create(request, *args, **kwargs)
