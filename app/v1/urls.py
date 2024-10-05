@@ -21,5 +21,4 @@ urlpatterns = [
     path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     # swagger
     path('swagger/', schema_view.with_ui('swagger', cache_timeout=0), name='schema-swagger-ui'),
-    path('swagger.yaml/', schema_view.without_ui(cache_timeout=0), name='schema-json'),
 ]
