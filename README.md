@@ -3,10 +3,10 @@
 1. Необходимо создать файл .env по следующему формату:
 
 ```dotenv
-TZ=Asia/Krasnoyarsk
-POSTGRES_PASSWORD=qwe2123132
-POSTGRES_USER=ybercode_userc
-POSTGRES_DB=cybercode
+TZ=UTC
+POSTGRES_PASSWORD=password
+POSTGRES_USER=user
+POSTGRES_DB=db
 POSTGRES_HOST=postgres
 POSTGRES_PORT=5432
 
