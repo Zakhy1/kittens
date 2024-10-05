@@ -10,8 +10,11 @@ services:
       poetry run python manage.py makemigrations --noinput &&
       poetry run python manage.py migrate --noinput &&
       poetry run python manage.py loaddata db.json &&
-      poetry run gunicorn --workers=1 project.wsgi:application --bind 0.0.0.0:8000      
+      poetry run python manage.py runserver 
       "
+    #      runserver потому что нет смысла поднимать веб-сервер для раздачи статики.
+    #      Если добавить nginx то можно запустить gunicorn
+    #      poetry run gunicorn --workers=1 project.wsgi:application --bind 0.0.0.0:8000
     ports:
       - '8000:8000'
     expose:
