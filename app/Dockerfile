@@ -1,30 +1,27 @@
-# pull official base image
-FROM python:3.10
+FROM python:3.11
 
-# set environment variables
-ENV PYTHONDONTWRITEBYTECODE 1
-ENV PYTHONUNBUFFERED 1
+# Настройки Poetry
+ENV POETRY_VERSION=1.8.2
+ENV POETRY_HOME=/opt/poetry
+ENV POETRY_VENV=/opt/poetry-venv
+ENV POETRY_CACHE_DIR=/opt/.cache
+# Python переменные
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
+# Установка Poetry
+RUN python3 -m venv $POETRY_VENV \
+	&& $POETRY_VENV/bin/pip install -U pip setuptools \
+	&& $POETRY_VENV/bin/pip install poetry==${POETRY_VERSION}
 
-# install system dependencies
-RUN apt-get update && apt-get install -y --no-install-recommends \
-    gcc
+# Добавление Poetry в PATH
+ENV PATH="${PATH}:${POETRY_VENV}/bin"
 
-# create the appropriate directories
-ENV HOME=/home/app
-ENV APP_HOME=/home/app/web
-RUN mkdir -p $APP_HOME/static
-WORKDIR $APP_HOME
+WORKDIR /home/app/web
 
-# install python dependencies
-COPY ./requirements.txt .
-RUN pip wheel --no-cache-dir --no-deps --wheel-dir /wheels -r requirements.txt
-RUN pip install --no-cache /wheels/* && rm -rf /wheels
+# Установка зависимостей
+COPY poetry.lock pyproject.toml ./
+RUN poetry install
 
-# copy project
-COPY . $APP_HOME
-
-# create the app user
-RUN addgroup --system app && adduser --system --group app && \
-    chown -R app:app $APP_HOME
-
-USER app
+# Запуск приложения
+COPY . /home/app/web
+EXPOSE 8000
